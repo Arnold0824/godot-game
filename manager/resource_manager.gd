@@ -12,7 +12,7 @@ func load_resource_async(path:String,callback:Callable,progress:Callable):
     var loading_progress: Array[float] = []
     ResourceLoader.load_threaded_request(path)
     while 1:
-        #print('loading!!!')
+        print('loading!!!')
         var status = ResourceLoader.load_threaded_get_status(path,loading_progress)
         if status == ResourceLoader.THREAD_LOAD_LOADED:
             var resource = ResourceLoader.load_threaded_get(path)

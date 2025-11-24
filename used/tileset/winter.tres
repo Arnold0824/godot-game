@@ -340,4 +340,4 @@ texture = ExtResource("1_hlrw3")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "island"
 terrain_set_0/terrain_0/color = Color(0.7076011, 0.08588614, 0.22632456, 1)
-sources/1 = SubResource("TileSetAtlasSource_s3rtk")
+sources/0 = SubResource("TileSetAtlasSource_s3rtk")
