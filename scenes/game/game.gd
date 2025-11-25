@@ -37,7 +37,7 @@ func load_level(level : LevelType):
             add_child(current_level_instance)
             level_loaded.emit(),
         func(progress):
-            print(progress)
+            print(progress),
     )
     
 
@@ -74,13 +74,10 @@ func _collect_tilemap_layers(node: Node, result: Array[TileMapLayer]) -> void:
         # 如果是 TileMapLayer，就加入结果数组
         if child is TileMapLayer:
             result.append(child)
-
         # 继续递归遍历它的子节点
         _collect_tilemap_layers(child, result)
          
 func switch_season(season:Season):
-    print("changing to %s" % season)
-    print("now is %s " % current_level_instance)
     var tilemap_layers:Array[TileMapLayer] = []
     #collect_tilemap_layers(current_level_instance,tilemap_layers)
     for child in get_all_tilemap_layers(current_level_instance):
@@ -90,31 +87,37 @@ func switch_season(season:Season):
     for tilemap in tilemap_layers:
         tilemap.tile_set = tileset
     
+func switch_season_with_anim(season:Season):
+    LoadingManager.enter(Vector2(0.5,0.5),false,
+    func():
+        switch_season(season)
+        LoadingManager.leave(Vector2(0.5,0.5),false)
+    )
     
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-# 1. 确认插件存在，并拿到单例
+#    print(LoadingManager.loading.material.get('shader_parameter/progress'))
     if not Engine.has_singleton("ImGuiAPI"):
         return
     var imgui: Object = Engine.get_singleton("ImGuiAPI")
 
     # 2. 每帧绘制 ImGui 窗口 + 按钮
     imgui.Begin("Debug")
-
     if imgui.Button("Spring"):
         print("Spring clicked")
-        switch_season(Season.Spring)
+        switch_season_with_anim(Season.Spring)
 
     if imgui.Button("Summer"):
         print("Summer clicked")
-        switch_season(Season.Summer)
+        switch_season_with_anim(Season.Summer)
 
     if imgui.Button("Fall"):
         print("Fall clicked")
-        switch_season(Season.Fall)
+        switch_season_with_anim(Season.Fall)
 
     if imgui.Button("Winter"):
         print("Winter clicked")
-        switch_season(Season.Winter)
+        switch_season_with_anim(Season.Winter)
 
     imgui.End()

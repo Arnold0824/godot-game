@@ -24,6 +24,7 @@ func load_resource_async(path:String,callback:Callable,progress:Callable):
             print('failed loading resource!')
             break
         await get_tree().process_frame
+    return null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

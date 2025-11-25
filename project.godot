@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+LoadingManager="*res://manager/loading_manager/loading_manager.tscn"
 ResourceManager="*res://manager/resource_manager.tscn"
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
 
