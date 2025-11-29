@@ -26,8 +26,16 @@ var season_dict:Dictionary = {
     Season.Winter : "winter",
 }
 var current_level_instance
+@export var camera:Camera
+@export var character:Character
 
 signal level_loaded
+
+func _enter_tree() -> void:
+   GameManager.game = self
+   
+func _exit_tree() -> void:
+    GameManager.game = null
 
 func load_level(level : LevelType):
     var level_path = "res://levels/%s/%s.tscn"%[level_type_dict[level],level_type_dict[level]]
@@ -35,6 +43,8 @@ func load_level(level : LevelType):
         func(scene:Resource):
             current_level_instance = scene.instantiate()
             add_child(current_level_instance)
+            camera.set_limit()
+            camera.set_follow_target(character)
             level_loaded.emit(),
         func(progress):
             print(progress),
@@ -83,7 +93,7 @@ func switch_season(season:Season):
     for child in get_all_tilemap_layers(current_level_instance):
         if child is TileMapLayer and child.get_meta("seasonal"):
             tilemap_layers.append(child)
-    var tileset:Resource = ResourceManager.load_resource("res://used/tileset/%s.tres" % season_dict[season])
+    var tileset:Resource = ResourceManager.load_resource("res://used/tileset/%s/%s.tres" % [season_dict[season],season_dict[season]])
     for tilemap in tilemap_layers:
         tilemap.tile_set = tileset
     

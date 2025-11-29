@@ -17,9 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameManager="*res://manager/game_manager/game_manager.tscn"
 LoadingManager="*res://manager/loading_manager/loading_manager.tscn"
-ResourceManager="*res://manager/resource_manager.tscn"
+ResourceManager="*res://manager/resource_manager/resource_manager.tscn"
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -36,7 +38,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/imgui-godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/imgui-godot/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
@@ -44,6 +46,10 @@ folder_colors={
 "res://Assets/": "green",
 "res://used/": "teal"
 }
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

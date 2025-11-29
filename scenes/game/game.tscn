@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd2ynotugib50"]
+[gd_scene load_steps=4 format=3 uid="uid://dd2ynotugib50"]
 
 [ext_resource type="Script" uid="uid://da0r1rqr7xy6" path="res://scenes/game/game.gd" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://d4l26nfsljcwp" path="res://components/camera/camera.tscn" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://cwblxm6staghk" path="res://components/character/character.tscn" id="3_0sr1o"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("camera", "character")]
 script = ExtResource("1_sul5r")
+camera = NodePath("Camera")
+character = NodePath("Character")
 metadata/_custom_type_script = "uid://da0r1rqr7xy6"
+
+[node name="Camera" parent="." instance=ExtResource("2_7h61r")]
+
+[node name="Character" parent="." instance=ExtResource("3_0sr1o")]
