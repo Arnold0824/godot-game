@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://68l6rntctxuj"]
+[gd_resource type="TileSet" format=3 uid="uid://68l6rntctxuj"]
 
 [ext_resource type="Texture2D" uid="uid://cabniw1iafkrs" path="res://Assets/Tileset/Spring/GrassWater.png" id="1_k1ns0"]
 [ext_resource type="Texture2D" uid="uid://npkc01mlcbdh" path="res://used/tileset/spring/spring_weeds.atlastex" id="2_u178g"]

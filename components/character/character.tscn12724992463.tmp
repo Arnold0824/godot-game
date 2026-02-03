@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cwblxm6staghk"]
+[gd_scene load_steps=25 format=3 uid="uid://cwblxm6staghk"]
 
 [ext_resource type="Script" uid="uid://ca4v0h8retr7l" path="res://components/character/character.gd" id="1_73516"]
 [ext_resource type="Texture2D" uid="uid://by7hf8nn47rg" path="res://used/character/josh/idle/idle_forward.atlastex" id="2_335n2"]
@@ -447,29 +447,30 @@ _data = {
 &"walk_parallel": SubResource("Animation_50a7f")
 }
 
-[node name="Character" type="CharacterBody2D" unique_id=377471039 node_paths=PackedStringArray("animation_tree", "graphics")]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
 z_index = 400
 z_as_relative = false
 script = ExtResource("1_73516")
 animation_tree = NodePath("AnimationTree")
-graphics = NodePath("Graphics")
 metadata/_custom_type_script = "uid://ca4v0h8retr7l"
 
-[node name="Graphics" type="Node2D" parent="." unique_id=1397335456]
+[node name="Graphics" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=1995819335]
-position = Vector2(0, -2)
+[node name="Sprite2D" type="Sprite2D" parent="Graphics"]
+position = Vector2(0, -11)
 texture = ExtResource("2_335n2")
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57318021]
-position = Vector2(1, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_5xa0e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=204433750]
-libraries/ = SubResource("AnimationLibrary_p1osb")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_p1osb")
+}
 
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1396718862]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = ExtResource("11_kenwf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/movement_state/blend_position = 0.30349597
@@ -478,4 +479,4 @@ parameters/movement_state/0/idle/blend_amount = 0.0
 parameters/movement_state/0/walk/blend_amount = 1.0
 parameters/movement_state/0/run/blend_amount = 0.0
 
-[node name="AnimationState" parent="." unique_id=639623250 instance=ExtResource("12_0hohy")]
+[node name="AnimationState" parent="." instance=ExtResource("12_0hohy")]

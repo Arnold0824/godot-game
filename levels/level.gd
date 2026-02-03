@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Level
 
 func get_all_tile_map_layers():

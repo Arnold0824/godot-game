@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjpdcag1x4yjq"]
+
+[ext_resource type="Script" uid="uid://cuxcsn3o0n36v" path="res://components/character/children/animation_state.gd" id="1_ed1pi"]
+
+[node name="AnimationState" type="Node2D"]
+script = ExtResource("1_ed1pi")
+metadata/_custom_type_script = "uid://cuxcsn3o0n36v"

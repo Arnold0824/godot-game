@@ -1,23 +1,22 @@
 extends Node
-@export var loading :ColorRect
-@export var animation_player:AnimationPlayer
+@export var loading: ColorRect
+@export var animation_player: AnimationPlayer
 
 var is_loading := false
-func enter(center:Vector2,invert:bool=false,callback: Callable =func():pass):
+func enter(center: Vector2, invert: bool = false, callback: Callable = func(): pass ):
     is_loading = true
-    loading.material.set('shader_parameter/is_active',invert)
-    loading.material.set('shader_parameter/center_point',center)
+    loading.material.set('shader_parameter/is_active', invert)
+    loading.material.set('shader_parameter/center_point', center)
     animation_player.play('enter')
-    await  animation_player.animation_finished
+    await animation_player.animation_finished
     callback.call()
     
-func leave(center:Vector2,invert:bool=false,callback: Callable =func():pass):
-    loading.material.set('shader_parameter/center_point',center)
+func leave(center: Vector2, invert: bool = false, callback: Callable = func(): pass ):
+    loading.material.set('shader_parameter/center_point', center)
     animation_player.play('leave')
-    await  animation_player.animation_finished
-    is_loading = true
+    await animation_player.animation_finished
+    is_loading = false
     callback.call()
-    
     
     
 # Called when the node enters the scene tree for the first time.

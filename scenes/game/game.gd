@@ -47,7 +47,7 @@ func load_level(level : LevelType):
             camera.set_follow_target(character)
             level_loaded.emit(),
         func(progress):
-            print(progress),
+            pass,
     )
     
 
@@ -98,16 +98,15 @@ func switch_season(season:Season):
         tilemap.tile_set = tileset
     
 func switch_season_with_anim(season:Season):
-    LoadingManager.enter(Vector2(0.5,0.5),false,
+    LoadingManager.enter(UtilsManager.get_screen_position(character.graphics).position,false,
     func():
         switch_season(season)
-        LoadingManager.leave(Vector2(0.5,0.5),false)
+        LoadingManager.leave(UtilsManager.get_screen_position(character.graphics).position,false)
     )
     
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-#    print(LoadingManager.loading.material.get('shader_parameter/progress'))
     if not Engine.has_singleton("ImGuiAPI"):
         return
     var imgui: Object = Engine.get_singleton("ImGuiAPI")
